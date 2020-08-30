@@ -6,11 +6,12 @@ import {Login} from '../models/login';
   providedIn: 'root'
 })
 export class LoginService {
+  private LOGIN_BASE_URL = 'login';
 
-  constructor(httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient) {
   }
 
   public validateLogin(login: Login) {
-
+    return this.httpClient.post<Login>(this.LOGIN_BASE_URL, login);
   }
 }
