@@ -17,6 +17,7 @@ export class AppInterceptor implements HttpInterceptor {
 
     request = request.clone({url: environment.baseURL + request.url});
 
+    console.log(request);
     return next.handle(request);
   }
 }

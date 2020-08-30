@@ -13,6 +13,8 @@ import {MatInputModule} from '@angular/material/input';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const appRoutes: Routes = [
   {
@@ -40,7 +42,9 @@ const appRoutes: Routes = [
     MatInputModule,
     BrowserAnimationsModule,
     NgbModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatButtonModule,
+    ReactiveFormsModule
   ],
   exports: [RouterModule],
   providers: [{
