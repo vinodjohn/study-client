@@ -1,16 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { HomeComponent } from './home/home.component';
+import {AppComponent} from './app.component';
+import {LoginComponent} from './login/login.component';
+import {SignupComponent} from './signup/signup.component';
+import {HomeComponent} from './home/home.component';
 import {RouterModule, Routes} from '@angular/router';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppInterceptor} from './shared/interceptor/app.interceptor';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {AppRoutingModule} from './app-routing/app-routing.module';
+import {AppRoutingModule} from './app-routing.module';
 import {MatInputModule} from '@angular/material/input';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 const appRoutes: Routes = [
   {
@@ -32,11 +34,13 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    MatFormFieldModule,
     RouterModule.forChild(appRoutes),
     AppRoutingModule,
     HttpClientModule,
-    MatInputModule
+    MatInputModule,
+    BrowserAnimationsModule,
+    NgbModule,
+    MatFormFieldModule
   ],
   exports: [RouterModule],
   providers: [{
@@ -46,4 +50,5 @@ const appRoutes: Routes = [
   }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
