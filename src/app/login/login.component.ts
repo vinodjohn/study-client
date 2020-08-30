@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {LoginService} from '../shared/services/login.service';
 import {Login} from '../shared/models/login';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import {Login} from '../shared/models/login';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService) {
+  constructor(private snackBar: MatSnackBar, private formBuilder: FormBuilder, private loginService: LoginService) {
   }
 
   loginGroup: FormGroup;
@@ -24,8 +25,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     const login = new Login(this.loginGroup.get('username').value, this.loginGroup.get('password').value);
-
-    console.log(login);
-    this.loginService.validateLogin(login);
+    this.loginService.validateLogin(login).subscribe(
+      value => console.log(value),
+      error => {
+        this.snackBar.open(error.error.message + error.error.details[0], 'Close', {
+          duration: 6000,
+          panelClass: 'snack-error-message'
+        });
+      }
+    );
   }
 }

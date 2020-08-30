@@ -12,7 +12,6 @@ export class LoginService {
   }
 
   public validateLogin(login: Login) {
-    console.log('inside service');
     return this.httpClient.post<Login>(this.LOGIN_BASE_URL, login);
   }
 }
